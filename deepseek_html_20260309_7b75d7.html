@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karandeep Singh | Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== LOADING SCREEN WITH TYPING EFFECT ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #0a192f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .typing-container {
+            margin-bottom: 30px;
+        }
+
+        #typing-name {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #64ffda;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+            min-height: 100px;
+            border-right: 4px solid #64ffda;
+            display: inline-block;
+            animation: blinkCursor 1s infinite;
+        }
+
+        @keyframes blinkCursor {
+            0%, 100% { border-color: #64ffda; }
+            50% { border-color: transparent; }
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background: #64ffda;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px #64ffda;
+        }
+
+        .loading-percentage {
+            font-size: 1.2rem;
+            color: #8892b0;
+            margin-top: 10px;
+        }
+
+        .loading-text {
+            font-size: 1rem;
+            color: #64ffda;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        /* ===== WAVE ANIMATION BACKGROUND ===== */
+        .wave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.25;
+        }
+
+        .wave-bg .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2364ffda" fill-opacity="0.5" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: wave 10s linear infinite alternate;
+        }
+
+        .wave-bg .wave2 {
+            height: 120px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%238894b0" fill-opacity="0.3" d="M0,256L48,234.7C96,213,192,171,288,165.3C384,160,480,192,576,208C672,224,768,224,864,208C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            bottom: 20px;
+            animation: wave2 15s linear infinite alternate;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0) scaleX(1); }
+            50% { transform: translateX(-25px) translateY(5px) scaleX(1.02); }
+            100% { transform: translateX(25px) translateY(-5px) scaleX(0.98); }
+        }
+
+        @keyframes wave2 {
+            0% { transform: translateX(0) translateY(0) scaleX(1); }
+            50% { transform: translateX(20px) translateY(-8px) scaleX(1.01); }
+            100% { transform: translateX(-20px) translateY(8px) scaleX(0.99); }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            opacity: 0;
+            animation: fadeInContent 1s ease forwards;
+            animation-delay: 3.5s; /* 3.5 sec baad content aayega */
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero .name {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #64ffda;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+            margin-bottom: 1rem;
+            animation: slideUpFade 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero .title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #8892b0;
+            margin-bottom: 2rem;
+            animation: slideUpFade 1.5s ease-out 0.3s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero .summary {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #a8b2d1;
+            animation: slideUpFade 1.5s ease-out 0.6s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            line-height: 1.8;
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Rest of your styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ccd6f6;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #64ffda;
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: rgba(100, 255, 218, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            padding: 1.2rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #64ffda;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skill-item i {
+            font-size: 1.5rem;
+            color: #8892b0;
+        }
+
+        .skill-item:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
+            transform: scale(1.05);
+        }
+
+        .experience-card {
+            background: rgba(2, 12, 27, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #64ffda;
+        }
+
+        .exp-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ccd6f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-company {
+            color: #64ffda;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .exp-desc {
+            list-style: none;
+        }
+
+        .exp-desc li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #a8b2d1;
+        }
+
+        .exp-desc li i {
+            color: #64ffda;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .edu-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(2, 12, 27, 0.5);
+            border-radius: 10px;
+        }
+
+        .edu-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #64ffda;
+        }
+
+        .edu-meta {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .edu-desc {
+            color: #a8b2d1;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(100, 255, 218, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: #64ffda;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            color: #a8b2d1;
+            word-break: break-all;
+        }
+
+        .contact-text a {
+            color: #ccd6f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: #64ffda;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #8892b0;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero .name {
+                font-size: 3rem;
+            }
+            .hero .title {
+                font-size: 1.3rem;
+            }
+            .hero .summary {
+                font-size: 1rem;
+            }
+            section {
+                padding: 2rem 1.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            #typing-name {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADING SCREEN WITH TYPING EFFECT -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="typing-container">
+                <span id="typing-name"></span>
+            </div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+            </div>
+            <div class="loading-percentage" id="loadingPercentage">0%</div>
+            <div class="loading-text">LOADING PORTFOLIO</div>
+        </div>
+    </div>
+
+    <!-- Wave Animation Background -->
+    <div class="wave-bg">
+        <div class="wave"></div>
+        <div class="wave2"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section with Name Animation -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="name">Karandeep Singh</h1>
+                <div class="title">Digital Marketing Enthusiast | SEO & Social Media Executive</div>
+                <div class="summary">
+                    Commerce student with foundational knowledge of Digital Marketing, including SEO, Social Media, and Google Ads. Passionate about leveraging analytical thinking and creativity to boost brand awareness and lead generation.
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Container -->
+        <div class="container">
+            <!-- Skills Section -->
+            <section>
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fas fa-paint-brush"></i> Graphic Designing</div>
+                    <div class="skill-item"><i class="fas fa-chart-line"></i> Social Media Optimization</div>
+                    <div class="skill-item"><i class="fas fa-bullhorn"></i> Social Media Marketing</div>
+                    <div class="skill-item"><i class="fas fa-ad"></i> Paid Ads (PPC)</div>
+                    <div class="skill-item"><i class="fas fa-pen-fancy"></i> Content Creation</div>
+                    <div class="skill-item"><i class="fas fa-chart-bar"></i> Analytics</div>
+                    <div class="skill-item"><i class="fas fa-video"></i> Video Editing</div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section>
+                <h2>Professional Experience</h2>
+                <div class="experience-card">
+                    <div class="exp-title">Freelance Digital Marketing Practitioner</div>
+                    <div class="exp-company">Self-Employed · Freelance</div>
+                    <ul class="exp-desc">
+                        <li><i class="fas fa-chevron-right"></i> <strong>Google & Social Media Ads:</strong> Successfully planned and executed advertising campaigns on Google and Instagram/Facebook, resulting in increased website traffic and lead generation for small businesses.</li>
+                        <li><i class="fas fa-chevron-right"></i> <strong>Graphic Design & Branding:</strong> Designed multiple professional logos and social media creatives using Canva and editing tools, helping clients establish strong brand identities.</li>
+                        <li><i class="fas fa-chevron-right"></i> <strong>Landing Page Development:</strong> Created high-converting landing pages using WordPress and basic HTML, focused on user experience and lead capture.</li>
+                        <li><i class="fas fa-chevron-right"></i> <strong>Video Editing:</strong> Edited promotional and social media videos for clients, ensuring engaging content with smooth transitions and branding elements.</li>
+                        <li><i class="fas fa-chevron-right"></i> <strong>Portfolio Development:</strong> Built a comprehensive portfolio showcasing design work, ad campaigns, and video projects to attract new clients.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section>
+                <h2>Education</h2>
+                
+                <div class="edu-item">
+                    <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
+                    <div class="edu-meta">Kurukshetra University · 2nd Semester (Pursuing)</div>
+                    <div class="edu-desc">
+                        <strong>Key Subjects:</strong> Programming (C, C++, Java, Python), Web Development (HTML, CSS, JS, WordPress), Database Management (MySQL), Computer Networks, Digital Electronics, Discrete Mathematics.
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-title">Class 12th (Commerce Stream)</div>
+                    <div class="edu-meta">Haryana Board · 2024-25 | Doon International School</div>
+                    <div class="edu-desc">
+                        <strong>Accountancy:</strong> Financial statements, ledger management.<br>
+                        <strong>Business Studies:</strong> Marketing, entrepreneurship, financial markets.<br>
+                        <strong>Economics:</strong> Micro & macroeconomics, demand-supply.<br>
+                        <strong>Informatics Practices:</strong> Spreadsheet, database, programming basics.<br>
+                        <strong>English:</strong> Professional communication, business writing.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section>
+                <h2>Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-text">+91 868587 3100</div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text"><a href="mailto:kdeep003889@gmail.com">kdeep003889@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">31 Old Ramesh Nagar, Karnal</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Karandeep Singh. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #64ffda;"></i></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Typing Effect -->
+    <script>
+        // Typing effect for name
+        const nameElement = document.getElementById('typing-name');
+        const loadingBar = document.getElementById('loadingBar');
+        const percentageElement = document.getElementById('loadingPercentage');
+        const loadingScreen = document.getElementById('loadingScreen');
+        
+        const fullName = "Karandeep Singh";
+        let index = 0;
+        let percentage = 0;
+        
+        // Typing effect function
+        function typeName() {
+            if (index < fullName.length) {
+                nameElement.textContent += fullName.charAt(index);
+                index++;
+                
+                // Update percentage based on name length
+                percentage = Math.floor((index / fullName.length) * 100);
+                percentageElement.textContent = percentage + '%';
+                loadingBar.style.width = percentage + '%';
+                
+                setTimeout(typeName, 150); // Har letter 150ms mein aayega
+            } else {
+                // Name complete ho gaya
+                percentageElement.textContent = '100%';
+                loadingBar.style.width = '100%';
+                
+                // Thoda wait karo phir loading screen hatao
+                setTimeout(function() {
+                    loadingScreen.classList.add('hide');
+                }, 1000); // 1 second extra wait
+            }
+        }
+        
+        // Start typing when page loads
+        window.addEventListener('load', function() {
+            setTimeout(typeName, 500); // 0.5 sec delay phir start
+        });
+    </script>
+</body>
+</html>
