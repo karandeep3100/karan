@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karandeep Singh | Portfolio</title>
+    <title>Karandeep Singh | Digital Marketing Portfolio</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts for professional typography (Poppins as used previously) -->
+    <!-- Google Fonts (Poppins) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -24,7 +24,7 @@
             position: relative;
         }
 
-        /* ===== LOADING SCREEN WITH TYPING EFFECT ===== */
+        /* ===== LOADING SCREEN ===== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -113,7 +113,7 @@
             margin-top: 20px;
         }
 
-        /* ===== WAVE ANIMATION BACKGROUND ===== */
+        /* ===== WAVE BACKGROUND ===== */
         .wave-bg {
             position: fixed;
             top: 0;
@@ -160,16 +160,12 @@
         .main-content {
             opacity: 0;
             animation: fadeInContent 1s ease forwards;
-            animation-delay: 3.5s; /* 3.5 sec baad content aayega */
+            animation-delay: 3.5s;
         }
 
         @keyframes fadeInContent {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Hero Section */
@@ -199,9 +195,9 @@
             animation: gradientShift 5s ease infinite;
             text-shadow: 0 0 20px rgba(240, 185, 11, 0.3);
             margin-bottom: 1rem;
-            animation: slideUpFade 1.5s ease-out forwards, gradientShift 5s ease infinite;
             opacity: 0;
             transform: translateY(50px);
+            animation: slideUpFade 1.5s ease-out forwards, gradientShift 5s ease infinite;
         }
 
         .hero .title {
@@ -209,9 +205,9 @@
             font-weight: 400;
             color: #aaa;
             margin-bottom: 2rem;
-            animation: slideUpFade 1.5s ease-out 0.3s forwards;
             opacity: 0;
             transform: translateY(30px);
+            animation: slideUpFade 1.5s ease-out 0.3s forwards;
         }
 
         .hero .summary {
@@ -219,17 +215,14 @@
             max-width: 700px;
             margin: 0 auto;
             color: #ccc;
-            animation: slideUpFade 1.5s ease-out 0.6s forwards;
             opacity: 0;
             transform: translateY(30px);
+            animation: slideUpFade 1.5s ease-out 0.6s forwards;
             line-height: 1.8;
         }
 
         @keyframes slideUpFade {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Container */
@@ -282,7 +275,24 @@
             border-radius: 2px;
         }
 
-        /* Skills Grid */
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2rem 0 1.5rem 0;
+            color: #f0b90b;
+        }
+
+        h3 i {
+            margin-right: 10px;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Grid (reused for service icons) */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -319,7 +329,58 @@
             box-shadow: 0 0 20px rgba(240, 185, 11, 0.3);
         }
 
-        /* Experience Card */
+        /* Service Cards Row */
+        .services-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: #ddd;
+        }
+
+        .service-card li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-card li i {
+            margin-top: 4px;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .commitment-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ddd;
+        }
+
+        /* Experience, Education, Contact (unchanged) */
         .experience-card {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
@@ -361,7 +422,6 @@
             margin-top: 5px;
         }
 
-        /* Education Item */
         .edu-item {
             margin-bottom: 2rem;
             padding: 1.5rem;
@@ -388,7 +448,6 @@
             line-height: 1.8;
         }
 
-        /* Contact Info */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -438,7 +497,6 @@
             color: #f0b90b;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
@@ -450,31 +508,19 @@
             color: #ff6b6b;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero .name {
-                font-size: 3rem;
-            }
-            .hero .title {
-                font-size: 1.3rem;
-            }
-            .hero .summary {
-                font-size: 1rem;
-            }
-            section {
-                padding: 2rem 1.5rem;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            #typing-name {
-                font-size: 2.5rem;
-            }
+            .hero .name { font-size: 3rem; }
+            .hero .title { font-size: 1.3rem; }
+            .hero .summary { font-size: 1rem; }
+            section { padding: 2rem 1.5rem; }
+            h2 { font-size: 2rem; }
+            #typing-name { font-size: 2.5rem; }
+            .services-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- LOADING SCREEN WITH TYPING EFFECT -->
+    <!-- LOADING SCREEN -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
             <div class="typing-container">
@@ -488,7 +534,7 @@
         </div>
     </div>
 
-    <!-- Wave Animation Background (recolored to gold/red) -->
+    <!-- Wave Background -->
     <div class="wave-bg">
         <div class="wave"></div>
         <div class="wave2"></div>
@@ -496,7 +542,7 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Hero Section with Name Animation -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="name">Karandeep Singh</h1>
@@ -507,9 +553,9 @@
             </div>
         </section>
 
-        <!-- Main Content Container -->
+        <!-- Main Container -->
         <div class="container">
-            <!-- Skills Section -->
+            <!-- Skills Section (original) -->
             <section>
                 <h2>Skills & Expertise</h2>
                 <div class="skills-grid">
@@ -523,7 +569,104 @@
                 </div>
             </section>
 
-            <!-- Experience Section -->
+            <!-- NEW COMPREHENSIVE SERVICES SECTION (from images) -->
+            <section>
+                <h2>Our Digital Marketing Services</h2>
+                <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.2rem;">We handle everything, so you can focus on running your business.</p>
+                
+                <!-- Core Services (What's Included) -->
+                <h3><i class="fas fa-cogs" style="color: #f0b90b;"></i> Core Services</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fas fa-users"></i> Social Media Management</div>
+                    <div class="skill-item"><i class="fas fa-pen"></i> Content Creation</div>
+                    <div class="skill-item"><i class="fas fa-ad"></i> Advertising</div>
+                    <div class="skill-item"><i class="fas fa-video"></i> Video Editing</div>
+                    <div class="skill-item"><i class="fas fa-paint-brush"></i> Graphic Design</div>
+                    <div class="skill-item"><i class="fas fa-ellipsis-h"></i> & More</div>
+                </div>
+
+                <!-- Daily Social & Advertising -->
+                <div class="services-row">
+                    <div class="service-card" style="border-left-color: #f0b90b;">
+                        <h4 style="color: #f0b90b;"><i class="fas fa-calendar-alt"></i> Daily Social Media Content</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> High-quality graphic designs</li>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Daily posts & stories</li>
+                        </ul>
+                    </div>
+                    <div class="service-card" style="border-left-color: #ff6b6b;">
+                        <h4 style="color: #ff6b6b;"><i class="fas fa-chart-line"></i> Advertising Setup & Optimization</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Facebook & Instagram Ads setup</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Ad optimization for better performance</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Your ad budget stays with you, no markups or hidden fees</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Content Handling & Weekly Video -->
+                <div class="services-row">
+                    <div class="service-card" style="border-left-color: #4ecdc4;">
+                        <h4 style="color: #4ecdc4;"><i class="fas fa-file-alt"></i> Complete Content Handling</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Caption writing</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Hashtag research</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Posting & content strategy</li>
+                        </ul>
+                    </div>
+                    <div class="service-card" style="border-left-color: #f0b90b;">
+                        <h4 style="color: #f0b90b;"><i class="fas fa-video"></i> Weekly Video Content</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Reels for Instagram & Facebook</li>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Trending audio & reel formats</li>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Basic to advanced video editing</li>
+                            <li><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Text, captions & branding added</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Website Services & Digital Marketing List -->
+                <div class="services-row">
+                    <div class="service-card" style="border-left-color: #ff6b6b;">
+                        <h4 style="color: #ff6b6b;"><i class="fas fa-code"></i> Website Services</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Website Design</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Website Development</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Landing Page Design</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> WordPress Website</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Website Speed Optimization</li>
+                            <li><i class="fas fa-check-circle" style="color: #ff6b6b;"></i> Video Editing</li>
+                        </ul>
+                    </div>
+                    <div class="service-card" style="border-left-color: #4ecdc4;">
+                        <h4 style="color: #4ecdc4;"><i class="fas fa-bullseye"></i> Digital Marketing</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> SEO (Search Engine Optimization)</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Social Media Marketing</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Google Ads Management</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Facebook & Instagram Ads</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Email Marketing</li>
+                            <li><i class="fas fa-check-circle" style="color: #4ecdc4;"></i> Google My Business Setup & Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Transparency Commitment (from 4.png, no pricing) -->
+                <div style="margin-top: 2.5rem; background: rgba(240, 185, 11, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid #f0b90b;">
+                    <h3 style="color: #f0b90b; margin-bottom: 1rem;">Our Commitment</h3>
+                    <p style="color: #ccc; margin-bottom: 1.5rem;">A long-term growth focused approach for serious brands. Simple & transparent.</p>
+                    <div class="commitment-grid">
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> No hidden charges</div>
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Full transparency</div>
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> You control your ad spend</div>
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Priority Support</div>
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Maximum Cost Savings</div>
+                        <div class="commitment-item"><i class="fas fa-check-circle" style="color: #f0b90b;"></i> Long-Term Growth Strategy</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Original Experience Section -->
             <section>
                 <h2>Professional Experience</h2>
                 <div class="experience-card">
@@ -542,7 +685,6 @@
             <!-- Education Section -->
             <section>
                 <h2>Education</h2>
-                
                 <div class="edu-item">
                     <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
                     <div class="edu-meta">Kurukshetra University · 2nd Semester (Pursuing)</div>
@@ -550,7 +692,6 @@
                         <strong>Key Subjects:</strong> Programming (C, C++, Java, Python), Web Development (HTML, CSS, JS, WordPress), Database Management (MySQL), Computer Networks, Digital Electronics, Discrete Mathematics.
                     </div>
                 </div>
-
                 <div class="edu-item">
                     <div class="edu-title">Class 12th (Commerce Stream)</div>
                     <div class="edu-meta">Haryana Board · 2024-25 | Doon International School</div>
@@ -592,7 +733,6 @@
 
     <!-- JavaScript for Typing Effect -->
     <script>
-        // Typing effect for name
         const nameElement = document.getElementById('typing-name');
         const loadingBar = document.getElementById('loadingBar');
         const percentageElement = document.getElementById('loadingPercentage');
@@ -600,35 +740,26 @@
         
         const fullName = "Karandeep Singh";
         let index = 0;
-        let percentage = 0;
         
-        // Typing effect function
         function typeName() {
             if (index < fullName.length) {
                 nameElement.textContent += fullName.charAt(index);
                 index++;
-                
-                // Update percentage based on name length
-                percentage = Math.floor((index / fullName.length) * 100);
+                let percentage = Math.floor((index / fullName.length) * 100);
                 percentageElement.textContent = percentage + '%';
                 loadingBar.style.width = percentage + '%';
-                
-                setTimeout(typeName, 150); // Har letter 150ms mein aayega
+                setTimeout(typeName, 150);
             } else {
-                // Name complete ho gaya
                 percentageElement.textContent = '100%';
                 loadingBar.style.width = '100%';
-                
-                // Thoda wait karo phir loading screen hatao
                 setTimeout(function() {
                     loadingScreen.classList.add('hide');
-                }, 1000); // 1 second extra wait
+                }, 1000);
             }
         }
         
-        // Start typing when page loads
         window.addEventListener('load', function() {
-            setTimeout(typeName, 500); // 0.5 sec delay phir start
+            setTimeout(typeName, 500);
         });
     </script>
 </body>
